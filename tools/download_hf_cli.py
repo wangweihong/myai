@@ -58,6 +58,7 @@ def generate_hf_command(repo_id, filename, local_dir):
     """
     # 构建下载命令
     cmd_parts = [
+        'HF_ENDPOINT=https://hf-mirror.com',
         'hf', 'download',
         repo_id,
         '--include',
