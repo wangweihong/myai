@@ -1,0 +1,6 @@
+huggingface-hub>=0.16.0
+modelscope>=1.9.0
+gitpython>=3.1.0
+requests>=2.25.0
+tqdm>=4.60.0
+rich>=13.0.0
