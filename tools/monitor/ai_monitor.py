@@ -7475,6 +7475,8 @@ vllm_dashboard=r"""
 # service.monitor.wang用于表示promtheus服务的域名。
 # 因为otel_collector_config_template模板包含大量的{}, 为了避免过多修改，并通过{var}变量的方式替换。而是通过域名映射,在docker-compose中
 # 对应域名映射ip来解决.
+
+# 在服务器重启后似乎遇到了otel推送监控数据异常的问题, 重启启动下compose就好
 otel_collector_config_template=r"""
 # 接收器
 receivers:
@@ -7592,7 +7594,7 @@ service:
     metrics:
       receivers: [prometheus, hostmetrics]
       processors: [resourcedetection, batch]
-      exporters: [prometheusremotewrite]
+      exporters: [prometheusremotewrite,prometheus]
 """
 OTEL_COLLECTOR_CONFIG= textwrap.dedent(otel_collector_config_template).strip()
 
