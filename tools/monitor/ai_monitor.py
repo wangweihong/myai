@@ -7545,6 +7545,13 @@ processors:
     timeout: 2s
     system:
       hostname_sources: [os] # alternatively, use [dns,os] for setting FQDN as host.name and os as fallback
+  transform:
+    metric_statements:
+      - context: datapoint
+        # 当指标时间为startTimestmp为0时,设置为当前时间
+        # 不然Promethues会报错，并提示"out of bounds"
+        statements:
+          - set(start_time_unix_nano, time_unix_nano) where start_time_unix_nano == 0
 
 extensions:
   health_check: {}
@@ -7593,8 +7600,8 @@ service:
   pipelines:
     metrics:
       receivers: [prometheus, hostmetrics]
-      processors: [resourcedetection, batch]
-      exporters: [prometheusremotewrite,prometheus]
+      processors: [resourcedetection, batch,transform]
+      exporters: [prometheusremotewrite,debug]
 """
 OTEL_COLLECTOR_CONFIG= textwrap.dedent(otel_collector_config_template).strip()
 
