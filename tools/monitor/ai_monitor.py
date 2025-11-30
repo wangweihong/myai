@@ -48,6 +48,7 @@ class SystemdService:
     DEFAULT_TEMPLATE = """
 [Unit]
 Description={description}
+Before={before_targets}
 After={after_targets}
 
 [Service]
@@ -91,6 +92,7 @@ WantedBy={wanted_by}
         params = {
             "description": f"{self.service_name} Service",
             "after_targets": "network.target syslog.target",
+            "before_targets":"",
             "service_type": "simple",
             "restart_policy": "always",
             "restart_sec": "5s",
@@ -7836,6 +7838,17 @@ def service_stack_generate(args):
         restart_policy="no",
     )
 
+    service_docker_compose_shutdown=SystemdService("monitor-service-compose-shutdown")
+    service_docker_compose_shutdown.generate_config(
+        before_targets="Before=shutdown.target reboot.target halt.target",
+        after_targets="",
+        exec_start="/usr/bin/docker compose down",
+        description="service-compose-shutdown.",
+        working_directory=monitorStackDir,
+        wanted_by="wanted_by.service docker.service",
+        service_type="oneshot",
+        restart_policy="no",
+    )
 
 
 def agent_stack_generate(args):
