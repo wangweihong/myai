@@ -1,0 +1,18 @@
+[submodule "comfyui/custom_nodes/@ComfyUI-Prompt-Assistant"]
+	path = comfyui/custom_nodes/@ComfyUI-Prompt-Assistant
+	url = https://github.com/yawiii/ComfyUI-Prompt-Assistant.git
+[submodule "comfyui/base/@ComfyUI-Docker"]
+	path = comfyui/base/@ComfyUI-Docker
+	url = https://github.com/YanWenKun/ComfyUI-Docker.git
+[submodule "comfyui/custom_nodes/@comfyui-GaussianViewer"]
+	path = comfyui/custom_nodes/@comfyui-GaussianViewer
+	url = https://github.com/CarlMarkswx/comfyui-GaussianViewer
+[submodule "comfyui/custom_nodes/@ComfyUI-GeometryPack"]
+	path = comfyui/custom_nodes/@ComfyUI-GeometryPack
+	url = https://github.com/PozzettiAndrea/ComfyUI-GeometryPack
+[submodule "comfyui/custom_nodes/@ComfyUI-Cinematic-Prompt"]
+	path = comfyui/custom_nodes/@ComfyUI-Cinematic-Prompt
+	url = https://github.com/yedp123/ComfyUI-Cinematic-Prompt.git
+[submodule "comfyui/custom_nodes/@ComfyUI-qwenmultiangle"]
+	path = comfyui/custom_nodes/@ComfyUI-qwenmultiangle
+	url = https://github.com/jtydhr88/ComfyUI-qwenmultiangle.git
